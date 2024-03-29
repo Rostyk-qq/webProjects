@@ -1,0 +1,66 @@
+якшо ми використовуємо type='module'
+для js file це означає шо тми можемо import export
+
+
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+
+ми можемо прописувати в властивостях
+--position: 50; для динаміки
+top: calc(var(--position) * 1vh);
+отримання в js
+const rootStyles = getComputedStyle(document.documentElement);
+const positionValue = rootStyles.getPropertyValue('--position');
+
+
+кольори hsl colors дуже легко керувати віддтінком навіть через js
+
+:root{
+    --hue: 200;
+    --saturation: 50%;
+    --foreground-color: hsl(var(--hue), var(--saturation), 75%);
+    --background-color: hsl(var(--hue), var(--saturation), 20%);;
+}
+
+
+для того шоб велике число не сунуло інше в score
+.score{
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 7vh;
+    color: var(--foreground-color);
+}
+.score > *{
+    flex-grow: 1;
+    flex-basis: 0;
+    padding: 0 2vh;
+}
+.score > :first-child{
+    text-align: right;
+}
+
+
+
+js
+
+window.requestAnimationFrame(functionName) краще від setInterval оскільки оптимізований
+бо працює з браузером
+
+getComputedStyle(this.ballElem).getPropertyValue('--x')
+this.ballElem.style.setProperty('key', 'value');
+
+
+
+return random value from min to max
+return Math.random() * (min - max) + max;
+
+
+
+задання значення мишки для paddle
+playerPaddle.position = (e.y / window.innerHeight) * 100;
+
+шоб орипмвти :root
+getComputedStyle(document.documentElement).getPropertyValue('--hue');

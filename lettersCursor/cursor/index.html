@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./style.css">
+    <title>Cursor</title>
+</head>
+<body>
+
+    <div id="cursor"></div>
+
+
+    <script>
+        const body = document.body;
+        const cursor = document.getElementById('cursor');
+
+
+        body.onmousemove = (e) => {
+            e.preventDefault();
+
+            cursor.style.top = e.pageY + 'px';
+            cursor.style.left = e.pageX + 'px';
+
+            body.style.backgroundPositionX = e.pageX/-4 + 'px';
+            body.style.backgroundPositionY = e.pageY/-4 + 'px';
+
+            const createElement = document.createElement('div');
+            createElement.className = 'element';
+            body.prepend(createElement);
+
+            createElement.style.top = cursor.getBoundingClientRect().y + 'px';
+            createElement.style.left = cursor.getBoundingClientRect().x + 'px';
+
+
+            setTimeout(function(){
+                const text = document.querySelectorAll('.element')[0];
+
+                const directionX = Math.random() < 0.5 ? -1 : 1;
+                const directionY = Math.random() < 0.5 ? -1 : 1;
+
+
+                text.style.left = parseInt(text.style.left) + (directionX * (Math.random() * 200)) + 'px';
+                text.style.top = parseInt(text.style.top) + (directionY * (Math.random() * 200)) + 'px';
+
+                const getNumber = Math.floor(Math.random() * (25) + (96)); // 25 + 65 uppercase
+                const letter = String.fromCharCode(getNumber);
+
+                text.innerText = letter;
+
+                text.style.opacity = 0;
+                text.style.transform = 'scale(0.25)';
+
+                setTimeout(() => {
+                    createElement.remove();
+                }, 1000)
+            }, 10);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./style.css">
+    <title>Cloud</title>
+</head>
+<body>
+    <div class="container">
+        <div class="cloud"></div>
+    </div>
+
+    <script>
+        function cloud(){
+            const e = document.createElement('div');
+            const cl = document.querySelector('.cloud');
+
+
+            const left = Math.floor((Math.random() * 320) + 1);
+            const duration = Math.random() * 0.5;
+            const width = Math.random() * 2;
+            const height = Math.random() * 10;
+
+            e.classList.add('rain');
+            e.style.left = left + 'px';
+            e.style.width = 0.5 * height + 'px';
+            e.style.height = 5 * width + 'px';
+            e.style.animationDuration = 1 + duration + 's';
+            cl.appendChild(e);
+
+            setTimeout(() => {
+                cl.removeChild(e);
+            }, 2000);
+        }
+
+        setInterval(() => {
+           cloud();
+        }, 20)
+    </script>
+</body>
+</html>

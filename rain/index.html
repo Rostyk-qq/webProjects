@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rain</title>
+</head>
+<body>
+    <div class="image"></div>
+    <script src="./script.js" defer></script>
+</body>
+
+<style>
+    body{
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        transform-style: preserve-3d;
+    }
+    .image{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('./asset/forest.jpg') no-repeat center;
+        background-size: cover;
+        z-index: 1;
+    }
+    i{
+        animation: line 1s linear infinite;
+        height: 30px;
+        border-top-left-radius: 60px;
+        border-top-right-radius: 60px;
+        background: linear-gradient(to bottom, #fff3 30%, #fff3 50%, #fff4 50%, #fff4 90%, #fff6 100%);
+    }
+
+    @keyframes line {
+        0%{
+            transform: translateY(-120vh);
+        }
+        100%{
+            transform: translateY(120vh);
+        }
+    }
+</style>
+</html>
